@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login"
+    android:background="#FCCCCC">
+
+    <EditText
+        android:id="@+id/emailLog"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginBottom="20dp"
+        android:alpha="0.5"
+        android:background="@drawable/input_frame"
+        android:ems="10"
+        android:hint="Enter your email"
+        android:inputType="text|textEmailAddress"
+        android:padding="10dp"
+        android:textColor="#272727"
+        app:layout_constraintBottom_toTopOf="@+id/passLog"
+        app:layout_constraintEnd_toEndOf="@+id/myImageView"
+        app:layout_constraintStart_toStartOf="@+id/myImageView"
+        app:layout_constraintTop_toBottomOf="@+id/myImageView" />
+
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/emailLog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/passLog"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="40dp"
+        android:alpha="0.5"
+        android:background="@drawable/input_frame"
+        android:ems="10"
+        android:hint="Enter your password"
+        android:inputType="text|textPassword"
+        android:padding="10dp"
+        android:textColor="#272727"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="@+id/emailLog"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/emailLog"
+        app:layout_constraintTop_toBottomOf="@+id/emailLog" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button"
+        android:text="LOGIN"
+        android:textColor="#EFEFEF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/unRegisteredButton"
+        app:layout_constraintEnd_toEndOf="@+id/passLog"
+        app:layout_constraintStart_toStartOf="@+id/passLog"
+        app:layout_constraintTop_toBottomOf="@+id/passLog" />
+
+    <TextView
+        android:id="@+id/label1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email Address"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/emailLog"
+        app:layout_constraintStart_toStartOf="@+id/emailLog" />
+
+    <TextView
+        android:id="@+id/label2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/passLog"
+        app:layout_constraintStart_toStartOf="@+id/passLog" />
+
+    <Button
+        android:id="@+id/unRegisteredButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:background="@null"
+        android:text="Don't have an account yet? Click here!"
+        android:textAllCaps="false"
+        android:textColor="#065248"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/loginButton"
+        app:layout_constraintStart_toStartOf="@+id/loginButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

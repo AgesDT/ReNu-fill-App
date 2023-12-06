@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".instruction"
+    android:background="#065248">
+
+
+    <ImageView
+        android:id="@+id/instructPNG"
+        android:layout_width="282dp"
+        android:layout_height="298dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/instruction" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Put your refill bottle inside!"
+        android:textColor="#EFEFEF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/generateButton"
+        app:layout_constraintEnd_toEndOf="@+id/instructPNG"
+        app:layout_constraintStart_toStartOf="@+id/instructPNG"
+        app:layout_constraintTop_toBottomOf="@+id/instructPNG" />
+
+    <Button
+        android:id="@+id/generateButton"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_pink"
+        android:text="REFILL NOW"
+        android:textColor="#272727"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/instructPNG"
+        app:layout_constraintStart_toStartOf="@+id/instructPNG"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

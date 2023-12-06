@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551262348284",
+    "project_id": "renu-fill-65eaa",
+    "storage_bucket": "renu-fill-65eaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551262348284:android:7821da716fc768b6edc879",
+        "android_client_info": {
+          "package_name": "com.example.renu_fill"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3yNQli7doq6U9MFukoyndZ1jXk79sdNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
