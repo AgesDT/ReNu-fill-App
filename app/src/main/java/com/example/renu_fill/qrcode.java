@@ -17,7 +17,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class qrcode extends AppCompatActivity {
     public static ImageView barcodePNG;
-    String barcodeNo = product.currBarcode;
+    String barcodeNo = product.barcode;
 
     Button backButton;
 

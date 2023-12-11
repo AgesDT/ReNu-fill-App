@@ -33,8 +33,9 @@ public class instruction extends AppCompatActivity {
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(instruction.this, qrcode.class));
+
+
             }
         });
     }

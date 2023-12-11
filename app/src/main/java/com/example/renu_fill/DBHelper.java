@@ -1,4 +1,5 @@
 package com.example.renu_fill;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -6,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -15,10 +18,12 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("create Table accounts(accID NUMBER, email TEXT primary key, password TEXT)");
+        DB.execSQL("create Table purchases(barcode TEXT primary key, accID NUMBER, purID NUMBER, capacity NUMBER)");
     }
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int ii) {
         DB.execSQL("drop Table if exists accounts");
+        DB.execSQL("drop Table if exists purchases");
     }
     public Boolean insertuserdata(int accID, String email, String password)
     {
@@ -34,10 +39,25 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    public void dropTable(String table){
+
+    public Boolean insertpurchase(String barcode, int purID, int accID, int capacity)
+    {
         SQLiteDatabase DB = this.getWritableDatabase();
-        DB.execSQL("drop Table if exists "+table);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("barcode", barcode);
+        contentValues.put("purID", purID);
+        contentValues.put("capacity", capacity);
+        contentValues.put("accID", accID);
+
+        long result=DB.insert("purchases", null, contentValues);
+        if(result==-1){
+            return false;
+        }else{
+            return true;
+        }
     }
+
+
     public Cursor getData(String table)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -53,7 +73,42 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return false;
     }
+    @SuppressLint("Range")
+    public String findAccID(String email) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String accID = null;
+
+        try {
+            Cursor cursor = DB.rawQuery("SELECT accID FROM accounts WHERE email = ?", new String[]{email});
+
+            // Check if the cursor is not null and it has at least one row
+            if (cursor != null && cursor.moveToFirst()) {
+                // Retrieve the value of the accID column
+                accID = cursor.getString(cursor.getColumnIndex("accID"));
+            }
+
+            // Close the cursor to avoid resource leaks
+            if (cursor != null) {
+                cursor.close();
+            }
+        } catch (Exception e) {
+            // Handle any potential exceptions, log or display a message
+            e.printStackTrace();
+        } finally {
+            // Close the database to avoid potential resource leaks
+            if (DB != null && DB.isOpen()) {
+                DB.close();
+            }
+        }
+
+        return accID;
+    }
 
 
-
+//    public ArrayList<currentAcc> storeDataLocal{
+//        SQLiteDatabase DB = this.getWritableDatabase();
+//        Cursor cursor = getData("accounts");
+//        ArrayList<currentAcc> arrayList = new ArrayList<>();
+//
+//    }
 }

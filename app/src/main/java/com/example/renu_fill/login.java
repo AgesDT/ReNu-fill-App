@@ -27,7 +27,7 @@ public class login extends AppCompatActivity {
         passLog = findViewById(R.id.passLog);
         loginButton = findViewById(R.id.loginButton);
         unRegisteredButton = findViewById(R.id.unRegisteredButton);
-
+        DB = new DBHelper(login.this);
         // Login button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +36,7 @@ public class login extends AppCompatActivity {
                 // Get email & pass form inputs
                 String inputLogEmail = emailLog.getText().toString();
                 String inputLogPassword = passLog.getText().toString();
-                DB = new DBHelper(login.this);
+
 
                 // Check if the form still empty or filled with inputs
                 if (inputLogEmail.length() == 0 || inputLogPassword.length() == 0) {
@@ -48,6 +48,10 @@ public class login extends AppCompatActivity {
                     // Check if already registered
                     Boolean checking = DB.isUserRegistered(inputLogEmail);
                     if(checking==true) {
+
+                        currAcc = DB.findAccID(inputLogEmail);
+                        Toast.makeText(getApplicationContext(), currAcc, Toast.LENGTH_SHORT).show();
+
                         startActivity(new Intent(login.this, product.class));
                     }
                     else{
