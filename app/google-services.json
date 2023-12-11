@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "551262348284",
-    "project_id": "renu-fill-65eaa",
-    "storage_bucket": "renu-fill-65eaa.appspot.com"
+    "project_number": "160412323503",
+    "firebase_url": "https://database-renufill-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "database-renufill",
+    "storage_bucket": "database-renufill.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:551262348284:android:7821da716fc768b6edc879",
+        "mobilesdk_app_id": "1:160412323503:android:1b3e066a7354af6cfc4e5a",
         "android_client_info": {
           "package_name": "com.example.renu_fill"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB3yNQli7doq6U9MFukoyndZ1jXk79sdNY"
+          "current_key": "AIzaSyDp0M6FRPIXB1-6x8yryjTF3xdkiZqTMg4"
         }
       ],
       "services": {
