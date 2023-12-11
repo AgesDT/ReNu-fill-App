@@ -19,6 +19,7 @@ public class product extends AppCompatActivity {
     Button nextButton;
     public int purId;
     public static String prevAcc, barcode;
+    public static int capacity;
     DBHelper DB;
 
     @Override
@@ -40,7 +41,7 @@ public class product extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String capacityString = vol.getText().toString();
-                int capacity = Integer.parseInt(capacityString);
+                capacity= Integer.parseInt(capacityString);
 
                 barcode = login.currAcc+'#'+purId;
                 Toast.makeText(getApplicationContext(), barcode, Toast.LENGTH_SHORT).show();

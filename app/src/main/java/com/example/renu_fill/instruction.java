@@ -35,7 +35,7 @@ public class instruction extends AppCompatActivity {
 
     private void updateDataInValidateChild() {
         // Set the new value for the "validate" child
-        String newValue = product.barcode; // Set the new value
+        int newValue = product.capacity; // Set the new value
 
         // Update the data in the "validate" child
         validateRef.setValue(newValue);
