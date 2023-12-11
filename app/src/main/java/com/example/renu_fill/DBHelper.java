@@ -8,12 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
+
     public DBHelper(Context context) {
         super(context, "Renufill.db", null, 1);
     }
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table accounts(accID NNUMBER primary key, email TEXT, password TEXT)");
+        DB.execSQL("create Table accounts(accID NUMBER, email TEXT primary key, password TEXT)");
     }
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int ii) {
@@ -33,19 +34,26 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    public Cursor getdata ()
+    public void dropTable(String table){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        DB.execSQL("drop Table if exists "+table);
+    }
+    public Cursor getData(String table)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from accounts", null);
+        Cursor cursor = DB.rawQuery("Select * from "+table, null);
         return cursor;
     }
-    // Add this method to get the count of rows in the table
-    public int getRowCount() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM your_table_name", null);
-        cursor.moveToFirst();
-        int count = cursor.getInt(0);
-        cursor.close();
-        return count;
+
+    public boolean isUserRegistered(String email) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from accounts where email = ?", new String[]{email});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
     }
+
+
+
 }

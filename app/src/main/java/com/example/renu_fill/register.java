@@ -11,7 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 public class register extends AppCompatActivity {
 
     EditText emailReg, passReg;
@@ -35,8 +36,8 @@ public class register extends AppCompatActivity {
         DB = new DBHelper(this);
 
         // Get account id by counting all data from the table
-        Cursor res = DB.getdata();
-        accId = res.getCount() + 500;
+        Cursor res = DB.getData("accounts");
+        accId = res.getCount() + 101;
 
 
         // Register button
@@ -56,17 +57,29 @@ public class register extends AppCompatActivity {
                 } else {
                     // Filled form
 
-                    // Send data to database
-                    DB.insertuserdata(accId, inputRegEmail, inputRegPassword);
+                    // Check if account already registered
+                    Boolean checking = DB.isUserRegistered(inputRegEmail);
+                    if(checking==true){
+                        // Account already registered
+                        Toast.makeText(getApplicationContext(), "Account already registered", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(register.this, login.class));
+                    }
+                    else{
+                        // Account is not registered
 
-                    // Pop up message and intent to login page
-                    Toast.makeText(getApplicationContext(), "Login to proceed", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(register.this, login.class));
+                        // Send data account to database
+                        DB.insertuserdata(accId, inputRegEmail, inputRegPassword);
+
+                        // Pop up message and intent to login page
+                        Toast.makeText(getApplicationContext(), "Login to proceed", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(register.this, login.class));
+                    }
+
                 }
             }
         });
 
-        // User that already registered can go to login with this button (another intent to login page)
+        // Users that already have an account can go to login with this button (another intent to login page)
         registeredButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
